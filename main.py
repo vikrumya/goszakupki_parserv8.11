@@ -85,21 +85,21 @@ ui.pushButton.clicked.connect(bp)
 def checking():
     ui.checkBox_reg1.toggle()
     ui.checkBox_reg2.toggle()
-    # ui.checkBox_reg3.toggle()
-    # ui.checkBox_reg4.toggle()
+    ui.checkBox_reg3.toggle()
+    ui.checkBox_reg4.toggle()
     ui.checkBox_reg5.toggle()
     ui.checkBox_reg6.toggle()
-    # ui.checkBox_reg7.toggle()
+    ui.checkBox_reg7.toggle()
     ui.checkBox_reg8.toggle()
     ui.checkBox_reg9.toggle()
     ui.checkBox_reg10.toggle()
     ui.checkBox_reg11.toggle()
-    # ui.checkBox_reg12.toggle()
+    ui.checkBox_reg12.toggle()
     ui.checkBox_reg13.toggle()
-    # ui.checkBox_reg14.toggle()
+    ui.checkBox_reg14.toggle()
     ui.checkBox_reg15.toggle()
-    # ui.checkBox_reg16.toggle()
-    # ui.checkBox_reg17.toggle()
+    ui.checkBox_reg16.toggle()
+    ui.checkBox_reg17.toggle()
     ui.checkBox_reg18.toggle()
     ui.checkBox_reg19.toggle()
     ui.checkBox_reg20.toggle()
@@ -112,14 +112,14 @@ def checking():
     ui.checkBox_reg27.toggle()
     ui.checkBox_reg28.toggle()
     ui.checkBox_reg29.toggle()
-    # ui.checkBox_reg30.toggle()
+    ui.checkBox_reg30.toggle()
     ui.checkBox_reg31.toggle()
     ui.checkBox_reg32.toggle()
-    # ui.checkBox_reg33.toggle()
+    ui.checkBox_reg33.toggle()
     ui.checkBox_reg34.toggle()
     ui.checkBox_reg35.toggle()
     ui.checkBox_reg36.toggle()
-    # ui.checkBox_reg37.toggle()
+    ui.checkBox_reg37.toggle()
     ui.checkBox_reg38.toggle()
     ui.checkBox_reg39.toggle()
     ui.checkBox_reg40.toggle()
@@ -135,11 +135,12 @@ def checking():
     ui.checkBox_reg50.toggle()
     ui.checkBox_reg51.toggle()
     ui.checkBox_reg52.toggle()
-    # ui.checkBox_reg53.toggle()
+    ui.checkBox_reg53.toggle()
     ui.checkBox_reg54.toggle()
-    # ui.checkBox_reg55.toggle()
+    ui.checkBox_reg55.toggle()
     ui.checkBox_reg56.toggle()
     ui.checkBox_reg57.toggle()
+    ui.checkBox_reg58.toggle()
 
 """Ищем по регионам"""
 def regions():
@@ -149,21 +150,21 @@ def regions():
         keywords.append('[01]майкоп дорог')
     if ui.checkBox_reg2.isChecked():
         keywords.append('[02]башкортостан дорог')
-        #keywords.append('[02]уфа дорог')
-    # if ui.checkBox_reg3.isChecked():
-    #     keywords.append('бурят дорог')
-    # if ui.checkBox_reg4.isChecked():
-    #     keywords.append('Алтай дорог')
-    #     keywords.append('барнаул дорог')
-    #     keywords.append('горно-алтайск дорог')
+        keywords.append('[02]уфа дорог')
+    if ui.checkBox_reg3.isChecked():
+        keywords.append('бурят дорог')
+    if ui.checkBox_reg4.isChecked():
+        keywords.append('Алтай дорог')
+        keywords.append('барнаул дорог')
+        keywords.append('горно-алтайск дорог')
     if ui.checkBox_reg5.isChecked():
         keywords.append('[07]кабардино-балкар дорог')
         keywords.append('[07]нальчик дорог')
     if ui.checkBox_reg6.isChecked():
         keywords.append('[08]калмык дорог')
         keywords.append('[08]элиста дорог')
-    # if ui.checkBox_reg7.isChecked():
-    #     keywords.append('карачаев дорог')
+    if ui.checkBox_reg7.isChecked():
+        keywords.append('карачаев дорог')
     if ui.checkBox_reg8.isChecked():
         keywords.append('[10]карел дорог')
         keywords.append('[10]петрозаводск дорог')
@@ -176,20 +177,20 @@ def regions():
     if ui.checkBox_reg11.isChecked():
         keywords.append('[13]мордов дорог')
         keywords.append('[13]саранск дорог')
-    # if ui.checkBox_reg12.isChecked():
-    #     keywords.append('осетия дорог')
+    if ui.checkBox_reg12.isChecked():
+        keywords.append('осетия дорог')
     if ui.checkBox_reg13.isChecked():
         keywords.append('[16]татарстан дорог')
         keywords.append('[16]казань дорог')
-    # if ui.checkBox_reg14.isChecked():
-    #     keywords.append('тыва дорог')
+    if ui.checkBox_reg14.isChecked():
+        keywords.append('тыва дорог')
     if ui.checkBox_reg15.isChecked():
         keywords.append('[18]удмурт дорог')
         keywords.append('[18]ижевск дорог')
-    # if ui.checkBox_reg16.isChecked():
-    #     keywords.append('хакаси дорог')
-    # if ui.checkBox_reg17.isChecked():
-    #     keywords.append('чуваш дорог')
+    if ui.checkBox_reg16.isChecked():
+        keywords.append('хакаси дорог')
+    if ui.checkBox_reg17.isChecked():
+        keywords.append('чуваш дорог')
     if ui.checkBox_reg18.isChecked():
         keywords.append('[23]краснодар дорог')
     if ui.checkBox_reg19.isChecked():
@@ -218,23 +219,23 @@ def regions():
     if ui.checkBox_reg29.isChecked():
         keywords.append('[40]калуга дорог')
         keywords.append('[40]калуж дорог')
-    # if ui.checkBox_reg30.isChecked():
-    #     keywords.append('кемеров дорог')
+    if ui.checkBox_reg30.isChecked():
+        keywords.append('кемеров дорог')
     if ui.checkBox_reg31.isChecked():
         keywords.append('[43]киров дорог')
     if ui.checkBox_reg32.isChecked():
         keywords.append('[44]костром дорог')
-    # if ui.checkBox_reg33.isChecked():
-    #     keywords.append('курган дорог')
+    if ui.checkBox_reg33.isChecked():
+        keywords.append('курган дорог')
     if ui.checkBox_reg34.isChecked():
         keywords.append('[46]курск дорог')
     if ui.checkBox_reg35.isChecked():
         keywords.append('[47]ленинград дорог')
     if ui.checkBox_reg36.isChecked():
         keywords.append('[48]липецк дорог')
-    # if ui.checkBox_reg37.isChecked():
-    #     keywords.append('москва дорог')
-    #     keywords.append('московск дорог')
+    if ui.checkBox_reg37.isChecked():
+        keywords.append('москва дорог')
+        keywords.append('московск дорог')
     if ui.checkBox_reg38.isChecked():
         keywords.append('[51]мурманск дорог')
     if ui.checkBox_reg39.isChecked():
@@ -269,16 +270,30 @@ def regions():
     if ui.checkBox_reg52.isChecked():
         keywords.append('[71]тула дорог')
         keywords.append('[71]тульск дорог')
-    # if ui.checkBox_reg53.isChecked():
-    #     keywords.append('тюмен дорог')
+    if ui.checkBox_reg53.isChecked():
+        keywords.append('тюмен дорог')
     if ui.checkBox_reg54.isChecked():
         keywords.append('[73]ульяновск дорог')
-    # if ui.checkBox_reg55.isChecked():
-    #     keywords.append('челябинск дорог')
+    if ui.checkBox_reg55.isChecked():
+        keywords.append('челябинск дорог')
     if ui.checkBox_reg56.isChecked():
         keywords.append('[76]ярослав дорог')
     if ui.checkBox_reg57.isChecked():
         keywords.append('[78]санкт-петербург дорог')
+    if ui.checkBox_reg58.isChecked():
+        keywords.append('[27]Красноярск дорог')
+        keywords.append('[27]Ачинск дорог')
+        keywords.append('[27]Боготол дорог')
+        keywords.append('[27]Бородино дорог')
+        keywords.append('[27]Дивногорск дорог')
+        keywords.append('[27]Енисейск дорог')
+        keywords.append('[27]Канск дорог')
+        keywords.append('[27]Лесосибирск дорог')
+        keywords.append('[27]Минусинск дорог')
+        keywords.append('[27]Назарово дорог')
+        keywords.append('[27]Норильск дорог')
+        keywords.append('[27]Сосновоборск дорог')
+        keywords.append('[27]Шарыпово дорог')
     FLAG = 1
     for key in keywords:
         bp_reg(key)
