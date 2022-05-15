@@ -22,9 +22,9 @@ import codecs
 from playsound import playsound
 import winsound
 
-def sound():
-    sound = os.path.dirname(__file__) + "\\sound.mp3"
-    winsound.PlaySound(sound, winsound.SND_ASYNC)
+#def sound():
+    #sound = os.path.dirname(__file__) + "\\sound.mp3"
+    #winsound.PlaySound(sound, winsound.SND_ASYNC)
     #playsound(sound)
 
 CSV = ''
@@ -39,18 +39,18 @@ ui.setupUi(Form)
 Form.show()
 #Логика
 
-class WinTable(QtWidgets.QMainWindow):
-    def __init__(self, parent=None):
-        super().__init__(parent)
-
-        self.title = "регион спарсен"
-        self.top = 700
-        self.left = 1500
-        self.width = 300
-        self.height = 150
-        self.setWindowTitle(self.title)
-        self.setGeometry(self.left, self.top, self.width, self.height)
-        sound()
+# class WinTable(QtWidgets.QMainWindow):
+#     def __init__(self, parent=None):
+#         super().__init__(parent)
+#
+#         self.title = "регион спарсен"
+#         self.top = 700
+#         self.left = 1500
+#         self.width = 300
+#         self.height = 150
+#         self.setWindowTitle(self.title)
+#         self.setGeometry(self.left, self.top, self.width, self.height)
+#         sound()
 
 
 if FLAG == 1:
@@ -906,7 +906,10 @@ def parser(keywords, date, date_end, ch1, ch2, ch3, ch4):
     #     print(pa)
     if DATE_END == '01.01.2000':
         DATE_END = ''
-    URL1 = URL + '?searchString=' + SEARCH_STRING + '&morphology=on&&sortDirection=false&recordsPerPage=_50&showLotsInfoHidden=false&sortBy=PUBLISH_DATE&fz44=on&fz223=on&af=' + af + '&ca=' + ca + '&pc=' + pc + '&pa=' + pa + '&currencyIdGeneral=-1&publishDateFrom=' + DATE_START +'&&publishDateTo=' + DATE_END
+    if SEARCH_STRING.isdecimal():
+        URL1 = f'https://zakupki.gov.ru/epz/contract/search/results.html?morphology=on&search-filter=%D0%A6%D0%B5%D0%BD%D0%B5&fz44=on&supplierTitle={SEARCH_STRING}&sortBy=PRICE&sortDirection=false&recordsPerPage=_50'
+    else:
+        URL1 = URL + '?searchString=' + SEARCH_STRING + '&morphology=on&&sortDirection=false&recordsPerPage=_50&showLotsInfoHidden=false&sortBy=PUBLISH_DATE&fz44=on&fz223=on&af=' + af + '&ca=' + ca + '&pc=' + pc + '&pa=' + pa + '&currencyIdGeneral=-1&publishDateFrom=' + DATE_START +'&&publishDateTo=' + DATE_END
     print(URL1)
     CSV = zapros + DATE_START + '-' + DATE_END + '.csv'
     OUTXLS = SEARCH_STRING + DATE_START + '.xls'
@@ -934,8 +937,8 @@ def parser(keywords, date, date_end, ch1, ch2, ch3, ch4):
             # printProgressBar(j + 1, last_page, prefix='Выполнение:', suffix='Выполнение закончено', length=50)
         pass
         print("Спарсено за %s минут ---" % ((time.time() - start_time) / 60))
-        ui.winTable = WinTable()
-        ui.winTable.show()
+#        ui.winTable = WinTable()
+#        ui.winTable.show()
     else:
         print('Error')
 #Run main loop
