@@ -19,7 +19,7 @@ from datetime import date
 from lxml import html
 import openpyxl
 import codecs
-from playsound import playsound
+#from playsound import playsound
 import winsound
 
 #def sound():
@@ -501,8 +501,7 @@ def get_content(html):
             price = ''
         if status == 'Определение поставщика завершено':
             try:
-                link_suppler = 'https://zakupki.gov.ru/epz/order/notice/ea44/view/supplier-results.html?regNumber=' + title[
-                                                                                                                      2:]
+                link_suppler = 'https://zakupki.gov.ru/epz/order/notice/ea44/view/supplier-results.html?regNumber=' + title[2:]
             except:
                 link_suppler = ''
             #   try:
@@ -574,7 +573,9 @@ def get_content(html):
                 inn = soup.find_all('span', class_='section__info')[-2].get_text(strip=True)
                 print("ИНН: " + inn)
                 """ПОлучаем урл карточки контракта"""
-                url4 = 'https://zakupki.gov.ru/epz/contract/search/results.html?searchString=&orderNumber=' + temp + '&openMode=USE_DEFAULT_PARAMS&fz44=on&priceFrom=0&priceTo=200000000000&contractStageList=0%2C1%2C2%2C3&budgetaryFunds = on & extraBudgetaryFunds = on'
+                url4 = 'https://zakupki.gov.ru/epz/contract/search/results.html?searchString=&orderNumber='
+                + temp 
+                + '&openMode=USE_DEFAULT_PARAMS&fz44=on&priceFrom=0&priceTo=200000000000&contractStageList=0%2C1%2C2%2C3&budgetaryFunds = on & extraBudgetaryFunds = on'
                 #url4 = 'https://zakupki.gov.ru/epz/order/notice/ea44/view/common-info.html?regNumber=' + temp
                 print(url4)
                 tempos = get_html(url4, proxy=None).content.decode('utf-8')
@@ -620,55 +621,6 @@ def get_content(html):
                     .find('td', class_='tableBlock__col').find('a').get('href')
                 print(table)
                 link_reestr = HOST+ table
-
-                # box = []
-                # for supple in table:
-                #     out = supple.findAll('td', 'tableBlock__col')
-                #     # j = 0
-                #     for o in out:
-                #         print(o.text)
-                #         print('----')
-                #         # box[j] = o.text
-                #         # j = j + 1
-                #         box.append(re.sub(' +', ' ', o.text.replace('\n', '')).strip())
-                # box = '\t'.join(box)
-                # box = re.split(r'\t', box)
-                # print(box)
-                # str1 = ''
-                # str2 = ''
-                # str3 = ''
-                # str4 = ''
-                # str5 = ''
-                # str6 = ''
-                # str7 = ''
-                # try:
-                #     str1 = re.sub("\t", '', box[0])
-                # except:
-                #     str1 = ''
-                # try:
-                #     str2 = re.sub("\t", '', box[1])
-                # except:
-                #     str2 = ''
-                # try:
-                #     str3 = re.sub("\t", '', box[2])
-                # except:
-                #     str3 = ''
-                # try:
-                #     str4 = re.sub("\t", '', box[3])
-                # except:
-                #     str4 = ''
-                # try:
-                #     str5 = re.sub("\t", '', box[4])
-                # except:
-                #     str5 = ''
-                # try:
-                #     str6 = re.sub("\t", '', box[5])
-                # except:
-                #     str6 = ''
-                # try:
-                #     str7 = re.sub("\t", '', box[6])
-                # except:
-                #     str7 = ''
             except:
                 print('нет реестра')
                 link_reestr = ''
@@ -834,15 +786,10 @@ def save_doc(items, path, outxls):
     with open(path, 'w', newline='', encoding="utf-8") as file:
         writer = csv.writer(file, delimiter=';')
         writer.writerow(
-            ['№ закупки', 'Ссылка на продукт', 'Статус', 'Описание объекта', 'Организация', 'Дата размещения',
-             'Цена', 'Ссылка на поставщика', 'Заказчик',
-             'Победитель', 'ИНН', 'Статус№1', 'Цена победителя', '№2', 'Статус №2', 'Цена №2',
-             'Дата окончания контракта', 'Дата начала контракта', 'Ссылка на реестровую запись', 'Адрес', 'Контакты', 'ФИО Руководителя'])
+            ['№ закупки', 'Ссылка на продукт', 'Статус', 'Описание объекта', 'Организация', 'Дата размещения','Цена', 'Ссылка на поставщика', 'Заказчик','Победитель', 'ИНН', 'Статус№1', 'Цена победителя', '№2', 'Статус №2', 'Цена №2','Дата окончания контракта', 'Дата начала контракта', 'Ссылка на реестровую запись', 'Адрес', 'Контакты', 'ФИО Руководителя'])
         for item in items:
             writer.writerow(
-                [item['title'], item['link_card'], item['status'], item['obj_short'], item['org'], item['date_first'],
-                 item['price'], item['link_suppler'],
-                 item['str1'], item['str2'], item['inn'], item['str3'], item['str4'], item['str5'], item['str6'], item['str7'],
+                [item['title'], item['link_card'], item['status'], item['obj_short'], item['org'], item['date_first'],item['price'], item['link_suppler'],item['str1'], item['str2'], item['inn'], item['str3'], item['str4'], item['str5'], item['str6'], item['str7'],
                 item['contract_start'], item['contract_end'], item['link_reestr'], item['adress'], item['contacts'], item['fio']])
     save_xls(path)
 
@@ -874,36 +821,6 @@ def parser(keywords, date, date_end, ch1, ch2, ch3, ch4):
     ca = ch2
     pc = ch3
     pa = ch4
-    # """Точка входа в программу"""
-    # SEARCH_STRING = input('Укажите поисковой запрос: ')
-    # SEARCH_STRING = str(SEARCH_STRING).replace(" ", "+")
-    # print(SEARCH_STRING)
-    # DATE_START = input('Укажите дату начала поиска в формате (дд.мм.гг): ')
-    # DATE_START = str(DATE_START)
-    # if DATE_START == '':
-    #     today = date.today()
-    #     DATE_START = today.strftime("%d.%m.%Y")
-    #     print(DATE_START)
-    # af = input('Статус "подача заявок" (on/off): ')
-    # af = str(af)
-    # if af == '':
-    #     af = 'on'
-    #     print(af)
-    # ca = input('Статус "работа комиссии" (on/off): ')
-    # ca = str(ca)
-    # if ca == '':
-    #     ca = 'on'
-    #     print(ca)
-    # pc = input('Статус "Закупка завершена" (on/off): ')
-    # pc = str(pc)
-    # if pc == '':
-    #     pc = 'on'
-    #     print(pc)
-    # pa = input('Статус "Закупка отменена" (on/off): ')
-    # pa = str(pa)
-    # if pa == '':
-    #     pa = 'on'
-    #     print(pa)
     if DATE_END == '01.01.2000':
         DATE_END = ''
     if SEARCH_STRING.isdecimal():
